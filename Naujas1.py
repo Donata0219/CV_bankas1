@@ -14,7 +14,7 @@ Sriuba = BeautifulSoup(svetaines_kodas, 'html.parser')
 Skelbimai = Sriuba.find_all("article")
 for Skelbimas in Skelbimai:
     Miestai = Skelbimas.find('span', class_="list_city").text
-    Atlyginimai = Skelbimas.find('span', class_="salary_amount").text
+    Atlyginimai = getattr(Skelbimas.find('span', class_="salary_amount"),"text", None)
     Darbo_skelbimas = Skelbimas.find('h3', class_="list_h3").text
     if Miestas in Miestai:
         print(f"Darbo skelbimas:  {Darbo_skelbimas}")
